@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 if [[ ${TOR} -eq 1 ]]; then
-    exec tor -f ${TOR_CONFIG:-/etc/tor/torrc}
+    exec s6-setuidgid tor tor -f ${TOR_CONFIG:-/etc/tor/torrc}
 else
     exec bash -c -- 'sleep 15; while true; do sleep infinity; done;'
 fi
